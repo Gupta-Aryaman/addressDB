@@ -23,6 +23,10 @@ public class AddressService {
         this.restTemplate = new RestTemplate();
         this.addressRepository = addressRepository;
     }
+    public AddressService(RestTemplate restTemplate, AddressRepository addressRepository){
+        this.restTemplate = restTemplate;
+        this.addressRepository = addressRepository;
+    }
 
     public ResponseEntity<?> fetchAddress(Integer number){
         try{
