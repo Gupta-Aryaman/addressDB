@@ -17,6 +17,9 @@ public class Address {
     private Float latitude;
     private Float longitude;
 
+    public Address() {
+    }
+
     public Address(Integer id, String street, String streetName, String buildingNumber, String city, String zipcode, String country, String county_code, Float latitude, Float longitude) {
         this.id = id;
         this.street = street;
