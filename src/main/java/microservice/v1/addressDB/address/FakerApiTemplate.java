@@ -1,12 +1,23 @@
 package microservice.v1.addressDB.address;
 import java.util.List;
-import microservice.v1.addressDB.address.AddressTemplate;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FakerApiTemplate {
+    @JsonProperty(required = true)
     private String status;
+    @JsonProperty(required = true)
     private Integer code;
+    @JsonProperty(required = true)
     private Integer total;
-    private List<AddressTemplate> data;
+    @JsonProperty(required = true)
+    private List<Address> data;
+
+    public FakerApiTemplate(String status, Integer code, Integer total, List<Address> data) {
+        this.status = status;
+        this.code = code;
+        this.total = total;
+        this.data = data;
+    }
 
     public String getStatus() {
         return status;
@@ -32,11 +43,11 @@ public class FakerApiTemplate {
         this.total = total;
     }
 
-    public List<AddressTemplate> getData() {
+    public List<Address> getData() {
         return data;
     }
 
-    public void setData(List<AddressTemplate> data) {
+    public void setData(List<Address> data) {
         this.data = data;
     }
 }

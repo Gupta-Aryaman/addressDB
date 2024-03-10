@@ -1,6 +1,11 @@
 package microservice.v1.addressDB.address;
+import jakarta.persistence.*;
 
-public class AddressTemplate {
+@Entity
+@Table
+public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String street;
     private String streetName;
@@ -12,7 +17,7 @@ public class AddressTemplate {
     private Float latitude;
     private Float longitude;
 
-    public AddressTemplate(Integer id, String street, String streetName, String buildingNumber, String city, String zipcode, String country, String county_code, Float latitude, Float longitude) {
+    public Address(Integer id, String street, String streetName, String buildingNumber, String city, String zipcode, String country, String county_code, Float latitude, Float longitude) {
         this.id = id;
         this.street = street;
         this.streetName = streetName;
