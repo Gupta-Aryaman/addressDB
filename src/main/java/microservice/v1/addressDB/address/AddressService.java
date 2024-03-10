@@ -36,7 +36,7 @@ public class AddressService {
             ResponseEntity<FakerApiTemplate> result = restTemplate.getForEntity(url, FakerApiTemplate.class);
 
             if (result.getStatusCode() != HttpStatus.OK) {
-                throw new HttpErrorException("HTTP Status Code was not 200", result.getStatusCode());
+                throw new HttpErrorException("FakerAPI response status Code was not 200", result.getStatusCode());
             }
 
             List<Address> task = result.getBody().getData();

@@ -93,7 +93,7 @@ public class AddressServiceTest {
         ResponseEntity<?> result = addressService.fetchAddress(5);
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, result.getStatusCode());
-        assertEquals("HTTP Status Code was not 200", result.getBody());
+        assertEquals("FakerAPI response status Code was not 200", result.getBody());
     }
 
     @Test
