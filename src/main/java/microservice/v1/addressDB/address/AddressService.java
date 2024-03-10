@@ -1,6 +1,7 @@
 package microservice.v1.addressDB.address;
 
 //import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import microservice.v1.addressDB.address.Exceptions.*;
 
@@ -69,5 +72,30 @@ public class AddressService {
                     .body("Error: " + e.getMessage());
         }
 
+    }
+
+    public ResponseEntity<?> listContentsDB(){
+        try{
+            List<Address> q = addressRepository.findAll();
+            Integer len = q.size();
+
+            Map<String, Object> mp = new HashMap<>();
+            mp.put("Status", "Success");
+            mp.put("Output_size", len);
+            mp.put("Addresses", q);
+
+            // Convert the Map to JSON format
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonBody = objectMapper.writeValueAsString(mp);
+
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(jsonBody);
+
+        } catch(Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error: " + e.getMessage());
+        }
     }
 }

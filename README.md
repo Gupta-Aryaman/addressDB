@@ -2,10 +2,10 @@
 
 ## Introduction
 An API made in Spring Boot to fetch *n* number of address from FakerAPI and put it in a PostgreSQL database.
-![img_2.png](help_files/img_2.png)
+![img.png](help_files/img1.png)
 
 ## API Endpoints
-1. api/v1/address - To fetch addresses from FakerAPI and insert in DB
+1. api/v1/address/insert?number=<number> - To fetch addresses from FakerAPI and insert in DB
 2. api/v1/address/list - To list contents of the DB
 
 ## Database

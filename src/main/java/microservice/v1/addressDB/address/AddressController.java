@@ -17,8 +17,13 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping
+    @GetMapping("/insert")
     public ResponseEntity<?> getAddress(@RequestParam Integer number){
         return addressService.fetchAddress(number);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<?> listContentsDB(){
+        return addressService.listContentsDB();
     }
 }
